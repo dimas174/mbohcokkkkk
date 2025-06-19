@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - MONEY MAKING PROJECT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.85)),
+                  url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALIAAACyCAYAAAAZ5uJxAAAAAXNSR0IArs4c6QAAAFtJREFUeF7twQEBAAAAgiD/r25IQAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwC3AAB3bPZogAAAAASUVORK5CYII=") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 10px #00000033;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      border-radius: 8px;
+      height: 28px;
+    }
+
+    .logo-text {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #e11d48;
+      text-shadow: 0 0 10px #e11d4877;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #ccc;
+      font-weight: 500;
+      margin-left: 25px;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: #e11d48;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px #00000099;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    .card input {
+      width: 94.5%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .card button {
+      width: 100%;
+      padding: 12px;
+      background: #e11d48;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #e11d48aa;
+    }
+
+    .card button:hover {
+      background: #ff3366;
+    }
+
+    .card h1 {
+      color: #e11d48;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
+
+    .card p {
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .card p a {
+      color: #e11d48;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 10px;
+      background-color: #0a0a0a;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    .success-animation {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="logo.jpg" alt="MONEY MAKING PROJECT" />
+      <span class="logo-text">MONEY MAKING PROJECT</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="store.html">Store</a>
+      <a href="edukasi.html">Edukasi</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="login.html">Login</a>
+      <a href="2fa.html">2FA Checker</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h1>🔐 Login</h1>
+      <input type="email" placeholder="Email" id="email" />
+      <input type="password" placeholder="Password" id="password" />
+      <button onclick="loginUser()">Masuk</button>
+      <p>Belum punya akun? <a href="register.html">Daftar</a></p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 MONEY MAKING PROJECT • WhatsApp: 08xxxx • Instagram: @mmp_official</p>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBH2LUJG8Vn3WJhnRFRGIA0SPYUvZ2Gso0",
+      authDomain: "mmproject-2b60d.firebaseapp.com",
+      databaseURL: "https://mmproject-2b60d-default-rtdb.firebaseio.com",
+      projectId: "mmproject-2b60d",
+      storageBucket: "mmproject-2b60d.appspot.com",
+      messagingSenderId: "719631959897",
+      appId: "1:719631959897:web:b7c045a300eb944b29ee48"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    window.loginUser = async function () {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        alert("Lengkapi semua field!");
+        return;
+      }
+
+      const snapshot = await get(child(ref(db), "users"));
+      let found = false;
+
+      snapshot.forEach(user => {
+        const data = user.val();
+        if (data.email === email && data.password === password) {
+          found = true;
+
+          localStorage.setItem("session_user", JSON.stringify({ nama: data.nama, email }));
+
+          const anim = document.createElement("div");
+anim.className = "success-animation";
+anim.innerHTML = `
+  <lottie-player 
+    src="https://lottie.host/6f64e6f6-8403-437d-933f-87be7d322489/66bsDMSkFr.json" 
+    background="transparent" 
+    speed="1" 
+    style="width: 200px; height: 200px;" 
+    autoplay>
+  </lottie-player>
+`;
+document.body.appendChild(anim);
+
+setTimeout(() => window.location.href = "dashboard.html", 2000);
+
+        }
+      });
+
+      if (!found) alert("Email atau password salah!");
+    };
+  </script>
+
+</body>
+</html>
