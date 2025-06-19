@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edukasi - MONEY MAKING PROJECT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.85)),
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALIAAACyCAYAAAAZ5uJxAAAAAXNSR0IArs4c6QAAAFtJREFUeF7twQEBAAAAgiD/r25IQAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwC3AAB3bPZogAAAAASUVORK5CYII=") center center no-repeat fixed;
+      background-size: cover;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      animation: fadeIn 1s ease-out;
+    }
+
+    a {
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #222;
+      box-shadow: 0 2px 10px #00000033;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 0.7s ease-out;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      border-radius: 8px;
+      height: 28px;
+    }
+
+    .logo-text {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #e11d48;
+      text-shadow: 0 0 10px #e11d4877;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 25px;
+      color: #ccc;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background-color: #e11d48;
+      transition: 0.3s ease-in-out;
+    }
+
+    .nav-links a:hover {
+      color: #e11d48;
+      text-shadow: 0 0 8px #e11d48aa;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .edu-container {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+      flex: 1;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .edu-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #e11d48;
+      margin-bottom: 50px;
+      text-shadow: 0 0 10px #e11d48aa;
+    }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .edu-card {
+      background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #000;
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+      animation: zoomIn 0.6s forwards;
+    }
+
+    .edu-card:nth-child(1) { animation-delay: 0.2s; }
+    .edu-card:nth-child(2) { animation-delay: 0.4s; }
+    .edu-card:nth-child(3) { animation-delay: 0.6s; }
+
+    .edu-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 0 25px #e11d48aa;
+    }
+
+    .edu-title-card {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .edu-desc {
+      font-size: 0.95rem;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+
+    .edu-link {
+      color: #00ffcc;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px 10px;
+      background-color: #0a0a0a;
+      color: #777;
+      font-size: 0.9rem;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        padding: 10px 20px;
+        margin-top: 10px;
+        border-top: 1px solid #333;
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 10px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .edu-title {
+        font-size: 1.8rem;
+      }
+
+      .logo-text {
+        font-size: 1.1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+        margin-left: 18px;
+      }
+    }
+
+    /* ANIMASI */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="/logo.jpg" alt="MONEY MAKING PROJECT" />
+      <span class="logo-text">MONEY MAKING PROJECT</span>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="store.html">Store</a>
+      <a href="edukasi.html">Edukasi</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="2fa.html">2FA Checker</a>
+      <a href="login.html" id="loginBtn">Login</a>
+      <a href="#" id="logoutBtn" onclick="logoutUser()" style="display:none;">Logout</a>
+    </nav>
+  </header>
+
+  <!-- EDUKASI CONTENT -->
+  <section class="edu-container">
+    <h1 class="edu-title">🎓 Edukasi Crypto, Forex & Sinyal Harian AI</h1>
+
+    <div class="edu-grid">
+      <div class="edu-card">
+        <h3 class="edu-title-card">🤖 Sinyal Harian oleh AI</h3>
+        <p class="edu-desc">Dapatkan sinyal trading harian akurat dari AI: BTC, ETH, XAUUSD & lainnya.</p>
+        <a href="sinyal.html" class="edu-link">Lihat Sinyal Hari Ini →</a>
+      </div>
+      <div class="edu-card">
+        <h3 class="edu-title-card">📚 Edukasi Crypto & Blockchain</h3>
+        <p class="edu-desc">Pelajari cara kerja crypto, teknologi blockchain, dan potensi keuntungannya.</p>
+        <a href="crypto.html" class="edu-link">Pelajari Crypto →</a>
+      </div>
+      <div class="edu-card">
+        <h3 class="edu-title-card">📉 Edukasi Forex Modern</h3>
+        <p class="edu-desc">Panduan lengkap forex modern, fokus pada AI & strategi risk management.</p>
+        <a href="forex.html" class="edu-link">Pelajari Forex →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 MONEY MAKING PROJECT • WhatsApp: 08xxxx • Instagram: @mmp_official</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    const user = localStorage.getItem("session_user");
+    if (!user) {
+      alert("Silakan login terlebih dahulu!");
+      window.location.href = "login.html";
+    } else {
+      const loginButton = document.getElementById("loginBtn");
+      const logoutButton = document.getElementById("logoutBtn");
+      if (loginButton) loginButton.style.display = "none";
+      if (logoutButton) logoutButton.style.display = "inline-block";
+    }
+
+    function logoutUser() {
+      localStorage.removeItem("session_user");
+      alert("Berhasil logout!");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

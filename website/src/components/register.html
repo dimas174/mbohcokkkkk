@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register - MONEY MAKING PROJECT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Firebase JS SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
+  <style>
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.85)),
+                  url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALIAAACyCAYAAAAZ5uJxAAAAAXNSR0IArs4c6QAAAFtJREFUeF7twQEBAAAAgiD/r25IQAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwC3AAB3bPZogAAAAASUVORK5CYII=") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 10px #00000033;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo img {
+      border-radius: 8px;
+      height: 28px;
+    }
+    .logo-text {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #e11d48;
+      text-shadow: 0 0 10px #e11d4877;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #ccc;
+      font-weight: 500;
+      margin-left: 25px;
+      text-decoration: none;
+    }
+    .nav-links a:hover {
+      color: #e11d48;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+    .card {
+      background: rgba(0,0,0,0.75);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px #00000088;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+    .card h1 {
+      color: #e11d48;
+      margin-bottom: 30px;
+      font-size: 1.8rem;
+    }
+    .card input {
+      width: 94.5%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+    .card button {
+      width: 100%;
+      padding: 12px;
+      background: #e11d48;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #e11d48aa;
+    }
+    .card button:hover {
+      background: #ff3366;
+    }
+    .footer {
+      text-align: center;
+      padding: 30px 10px;
+      background-color: #0a0a0a;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="/logo.jpg" alt="MONEY MAKING PROJECT" height="28" />
+      <span class="logo-text">MONEY MAKING PROJECT</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="store.html">Store</a>
+      <a href="edukasi.html">Edukasi</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="login.html">Login</a>
+      <a href="2fa.html">2FA Checker</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h1>📝 Daftar Akun Baru</h1>
+      <input type="text" placeholder="Nama Lengkap" id="nama">
+      <input type="email" placeholder="Email" id="email">
+      <input type="password" placeholder="Password" id="password">
+      <button onclick="registerUser()">Daftar Sekarang</button>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 MONEY MAKING PROJECT • WhatsApp: 08xxxx • Instagram: @mmp_official</p>
+  </footer>
+
+  <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBH2LUJG8Vn3WJhnRFRGIA0SPYUvZ2Gso0",
+    authDomain: "mmproject-2b60d.firebaseapp.com",
+    databaseURL: "https://mmproject-2b60d-default-rtdb.firebaseio.com",
+    projectId: "mmproject-2b60d",
+    storageBucket: "mmproject-2b60d.appspot.com",
+    messagingSenderId: "719631959897",
+    appId: "1:719631959897:web:b7c045a300eb944b29ee48",
+    measurementId: "G-NZKM19N8V6"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  function registerUser() {
+    const nama = document.getElementById("nama").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if (!nama || !email || !password) {
+      alert("Semua field wajib diisi!");
+      return;
+    }
+
+    db.ref("users").push({
+      nama: nama,
+      email: email,
+      password: password,
+      waktu: new Date().toISOString()
+    })
+    .then(() => {
+      document.querySelector(".card").innerHTML = `
+        <h1>🎉 Pendaftaran Berhasil!</h1>
+        <p style="margin-bottom: 20px;">Akun Anda telah dibuat dengan sukses.</p>
+        <button onclick="window.location.href='login.html'">Masuk Sekarang</button>
+      `;
+    })
+    .catch(error => {
+      console.error(error);
+      alert("Gagal menyimpan data.");
+    });
+  }
+</script>
+</body>
+</html>
