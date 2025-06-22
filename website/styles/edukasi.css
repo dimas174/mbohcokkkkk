@@ -1,0 +1,59 @@
+/* Specific styles for edukasi.html */
+.edu-container {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+    flex: 1;
+    animation: fadeIn 1s ease-in;
+}
+
+.edu-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #e11d48;
+    margin-bottom: 50px;
+    text-shadow: 0 0 10px #e11d48aa;
+}
+
+.edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.edu-card {
+    background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #000;
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+    animation: zoomIn 0.6s forwards;
+}
+
+.edu-card:nth-child(1) { animation-delay: 0.2s; }
+.edu-card:nth-child(2) { animation-delay: 0.4s; }
+.edu-card:nth-child(3) { animation-delay: 0.6s; }
+
+.edu-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 0 25px #e11d48aa;
+}
+
+.edu-title-card {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.edu-desc {
+    font-size: 0.95rem;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.edu-link {
+    color: #00ffcc;
+    font-weight: bold;
+}

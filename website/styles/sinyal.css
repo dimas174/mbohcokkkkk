@@ -1,0 +1,19 @@
+/* Specific styles for sinyal.html */
+body {
+    /* Background dan font-family mungkin sudah di global.css, sesuaikan jika perlu */
+    /* background: #111; */
+    /* color: #fff; */
+    /* font-family: 'Poppins', sans-serif; */
+    padding: 30px; /* Ini mungkin tetap spesifik untuk halaman ini */
+}
+h1 {
+    color: #e11d48;
+}
+.signal {
+    background: #1e1e1e;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+    white-space: pre-wrap;
+}

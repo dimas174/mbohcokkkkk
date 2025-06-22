@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>2FA Generator - MONEY MAKING PROJECT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/global.css" />
+  <link rel="stylesheet" href="styles/2fa.css" />
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="twofa-container">
+      <h1>🔐 Generator Kode 2FA</h1>
+      <p>Masukkan Secret Key (Base32)</p>
+      <input type="text" id="secret" placeholder="Contoh: JBSWY3DPEHPK3PXP" value="F6CMY4K3VBYWFIEFM3YKDHQIVLF2X53G" />
+      <br />
+      <button onclick="generate()">Generate</button>
+      <div class="code">
+        <span id="otp">------</span>
+        <button onclick="copyOTP()" id="copyBtn" title="Salin Kode">
+          📋
+        </button>
+      </div>
+      <div class="timer" id="countdown">Waktu tersisa: -</div>
+      <img src="https://cdn-icons-png.flaticon.com/512/3212/3212608.png" class="rocket" id="rocket" alt="Rocket" />
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+  <script type="module" src="scripts/global.js"></script>
+  <script type="module" src="scripts/2fa.js"></script>
+</body>
+</html>

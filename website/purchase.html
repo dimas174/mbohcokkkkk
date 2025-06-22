@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pembelian Produk - MONEY MAKING PROJECT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="styles/purchase.css"> 
+
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <a href="javascript:history.back()" class="back-button" title="Kembali ke Store">
+      <i class="fas fa-arrow-left"></i> Kembali
+    </a>
+    <section class="purchase-container card">
+      <h1 id="product-name-display"><i class="fas fa-spinner fa-spin"></i> Memuat Produk...</h1>
+      <p id="product-description-display" style="color: #ccc;"></p>
+      
+      <div class="purchase-details">
+        <p class="unit-price-display">Harga Satuan: <span id="unit-price-value">Rp --</span></p>
+        <div class="quantity-control">
+          <label for="quantity">Kuantitas:</label>
+          <input type="number" id="quantity" value="1" min="1" max="100"> 
+        </div>
+        <p class="total-price-display">Total Harga: <span id="total-price-value">Rp --</span></p>
+      </div>
+
+      <button id="proceed-to-payment-btn" disabled>Lanjutkan Pembayaran</button>
+      <div id="purchase-error-message" style="color: #e11d48; margin-top: 10px; display: none;"></div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+  <script type="module" src="scripts/global.js"></script>
+  <script type="module" src="scripts/purchase.js"></script>
+</body>
+</html>

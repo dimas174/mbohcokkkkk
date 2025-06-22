@@ -1,0 +1,89 @@
+/* Specific styles for 2fa.html */
+.twofa-container {
+  text-align: center;
+  padding: 120px 20px 80px; /* Padding atas, samping, bawah */
+  animation: fadeIn 1.2s ease-out;
+  width: 100%; /* Memastikan container mengambil lebar penuh yang tersedia */
+  max-width: 600px; /* Batasan lebar maksimum untuk penampilan yang lebih baik */
+  margin: 0 auto; /* <-- PASTIKAN BARIS INI ADA DAN TIDAK DICORET */
+}
+
+/* ... (sisa kode 2fa.css Anda) ... */
+
+.twofa-container input {
+  padding: 14px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  margin: 10px auto; /* Centering for inputs */
+  display: block;
+  width: calc(100% - 20px);
+  max-width: 300px;
+}
+
+.twofa-container button {
+  padding: 14px 30px;
+  background: #e11d48;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 10px #e11d48aa;
+  transition: 0.3s ease;
+  margin: 10px auto; /* Centering for buttons */
+  display: block;
+}
+
+.twofa-container button:hover {
+  background: #ff3366;
+  box-shadow: 0 0 20px #e11d48aa;
+}
+
+.code {
+  font-size: 3.5rem;
+  margin-top: 30px;
+  color: #00ffcc;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px #00ffcc88;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.timer {
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #aaa;
+}
+
+.rocket {
+  width: 60px;
+  margin-top: 40px;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.8s ease;
+}
+
+.rocket.active {
+  opacity: 1;
+  transform: translateY(-20px);
+}
+
+#copyBtn {
+  padding: 8px 12px;
+  font-size: 1rem;
+  background: #00ffcc;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0;
+  display: inline-block;
+  box-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
+}
+#copyBtn:hover {
+  background: #00e6b3;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.8);
+}

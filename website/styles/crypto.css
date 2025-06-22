@@ -1,0 +1,37 @@
+/* Specific styles for crypto.html */
+main {
+    padding: 0; /* Remove default main padding from global.css if main has padding */
+}
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+h1 {
+    color: #e11d48;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px #e11d48aa;
+}
+h2 {
+    color: #00ffcc;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+    margin-top: 40px;
+}
+p {
+    color: #ccc;
+}
+.section {
+    margin-bottom: 40px;
+}
+ul {
+    padding-left: 20px;
+}
+li {
+    margin-bottom: 8px;
+}
+a {
+    color: #00ffcc;
+}

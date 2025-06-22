@@ -1,0 +1,8 @@
+/* Specific styles for register.html */
+/* ... (Gaya lainnya yang sudah ada di file ini jika ada) ... */
+
+/* Animasi Roket untuk Register */
+.rocket.active {
+    opacity: 1;
+    transform: translateY(-20px);
+}
